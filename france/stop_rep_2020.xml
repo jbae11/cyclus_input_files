@@ -1537,12 +1537,30 @@
         </initialfacilitylist>
     </institution>
     <institution>
+      <name>France_fuelcycle</name>
+      <config>
+        <DeployInst>
+          <prototypes>
+            <val>mixer</val>
+          </prototypes>
+          <build_times>
+            <val>1</val>
+          </build_times>
+          <n_build>
+            <val>1</val>
+          </n_build>
+          <lifetimes>
+            <val>480</val>
+          </lifetimes>
+      </DeployInst>
+    </config>
+  </institution>
+    <institution>
       <name>France_government</name>
       <config>
         <DeployInst>
 
           <prototypes>
-<val>mixer</val>
 <val>reprocessing</val>
 <val>CHINON A-2</val>
 <val>CHINON A-3</val>
@@ -1614,7 +1632,6 @@
 
 </prototypes>
 <build_times>
-<val>1</val>
 <val>1</val>
 <val>1</val>
 <val>1</val>
@@ -1754,11 +1771,9 @@
 <val>1</val>
 <val>1</val>
 <val>1</val>
-<val>1</val>
 
 </n_build>
 <lifetimes>
-<val>480</val>
 <val>480</val>
 <val>161</val>
 <val>245</val>
