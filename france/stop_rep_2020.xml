@@ -1,7 +1,7 @@
 <!-- Historic, France, stops reprocessing at 2020 -->
 <simulation>
   <control>
-    <duration>360</duration>
+    <duration>660</duration>
     <startmonth>1 </startmonth>
     <startyear>1970 </startyear>
     <decay>lazy</decay>
@@ -1537,10 +1537,6 @@
           <entry>
             <number>1</number>
             <prototype>mixer</prototype>
-          </entry>
-          <entry>
-            <number>1</number>
-            <prototype>reprocessing</prototype>
           </entry>
         </initialfacilitylist>
     </institution>

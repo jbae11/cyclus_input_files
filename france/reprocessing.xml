@@ -1,7 +1,7 @@
 <!-- Historic, France, Reprocessing MOX (perpetual) -->
 <simulation>
   <control>
-    <duration>360</duration>
+    <duration>660</duration>
     <startmonth>1 </startmonth>
     <startyear>1970 </startyear>
     <decay>lazy</decay>
@@ -1550,7 +1550,6 @@
         <DeployInst>
 
           <prototypes>
-<val>reprocessing</val>
 <val>CHINON A-2</val>
 <val>CHINON A-3</val>
 <val>CHOOZ-A (ARDENNES)</val>
@@ -1621,7 +1620,6 @@
 
 </prototypes>
 <build_times>
-<val>1</val>
 <val>1</val>
 <val>1</val>
 <val>1</val>
@@ -1759,11 +1757,9 @@
 <val>1</val>
 <val>1</val>
 <val>1</val>
-<val>1</val>
 
 </n_build>
 <lifetimes>
-<val>480</val>
 <val>161</val>
 <val>245</val>
 <val>262</val>
