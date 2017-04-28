@@ -143,7 +143,7 @@
         <tails_assay>0.003</tails_assay>
         <tails_commod>enrich_waste</tails_commod>
         <swu_capacity>1e100</swu_capacity>
-        <initial_feed>1e100</initial_feed>
+        <initial_feed>0</initial_feed>
       </Enrichment>
     </config>
   </facility>
@@ -1534,10 +1534,6 @@
             <number>1</number>
             <prototype>SomeSink</prototype>
           </entry>
-          <entry>
-            <number>1</number>
-            <prototype>mixer</prototype>
-          </entry>
         </initialfacilitylist>
     </institution>
     <institution>
@@ -1546,6 +1542,7 @@
         <DeployInst>
 
           <prototypes>
+<val>mixer</val>
 <val>reprocessing</val>
 <val>CHINON A-2</val>
 <val>CHINON A-3</val>
@@ -1617,6 +1614,7 @@
 
 </prototypes>
 <build_times>
+<val>1</val>
 <val>1</val>
 <val>1</val>
 <val>1</val>
@@ -1756,9 +1754,11 @@
 <val>1</val>
 <val>1</val>
 <val>1</val>
+<val>1</val>
 
 </n_build>
 <lifetimes>
+<val>480</val>
 <val>480</val>
 <val>161</val>
 <val>245</val>
