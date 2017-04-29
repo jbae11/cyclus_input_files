@@ -1534,27 +1534,12 @@
             <number>1</number>
             <prototype>SomeSink</prototype>
           </entry>
+          <entry>
+          	<number>1</number>
+            <prototype>mixer</prototype>
+          </entry>
         </initialfacilitylist>
     </institution>
-    <institution>
-      <name>France_fuelcycle</name>
-      <config>
-        <DeployInst>
-          <prototypes>
-            <val>mixer</val>
-          </prototypes>
-          <build_times>
-            <val>1</val>
-          </build_times>
-          <n_build>
-            <val>1</val>
-          </n_build>
-          <lifetimes>
-            <val>480</val>
-          </lifetimes>
-      </DeployInst>
-    </config>
-  </institution>
     <institution>
       <name>France_government</name>
       <config>
