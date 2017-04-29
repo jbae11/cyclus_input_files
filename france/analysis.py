@@ -1,6 +1,5 @@
 import sqlite3 as lite
 import sys
-from pyne import nucname
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
@@ -233,7 +232,6 @@ def sum_nuclide_to_dict(nuclides, nuclides_mass):
         for i in range(len(nuclides)):
             if nuclides[i] == nuclide:
                 temp_nuclide_sum += nuclides_mass[i]
-        nuclide_name = str(nucname.name(nuclide))
         mass_dict[nuclide_name] = temp_nuclide_sum
 
     print(sum(mass_dict.values()))
@@ -638,7 +636,7 @@ def multi_line_plot(dictionary, timestep,
         if isinstance(key, str) is True:
             label = key.replace('_government', '')
         else:
-            label = str(nucname.name(key))
+            label = key
         plt.plot(init_year + (timestep/12),
                  dictionary[key],
                  label=label)
@@ -690,7 +688,7 @@ def stacked_bar_chart(dictionary, timestep,
         if isinstance(key, str) is True:
             label = key.replace('_government', '')
         else:
-            label = str(nucname.name(key))
+            label = key
         # very first country does not have a 'bottom' argument
         if top_index is True:
             plot = plt.bar(left=init_year + (timestep/12),
@@ -797,6 +795,11 @@ if __name__ == "__main__":
             pile_dict2 ['Separation'] = reprocessed U
         """
         waste_dict = total_waste_timeseries(cur)
+        multi_line_plot(waste_dict, timestep,
+                          'Years', 'Mass[MTHM]',
+                          'Total Waste Mass vs Time',
+                          'total_Waste',
+                          init_year)
 
         fuel_dict = fuel_usage_timeseries(cur, ['uox','mox'])
         stacked_bar_chart(fuel_dict, timestep,
