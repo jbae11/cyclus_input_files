@@ -412,8 +412,8 @@ def total_waste_timeseries(cursor):
 
 
     waste_dict['Reactor'] = reactor_timeseries
-    waste_dict['Separations'] = separations_timeseries
-    waste_dict['Enrichment'] = enrichment_timeseries
+    waste_dict['FP_MA'] = separations_timeseries
+    waste_dict['Tails'] = enrichment_timeseries
 
     return waste_dict
 
@@ -646,7 +646,7 @@ def multi_line_plot(dictionary, timestep,
         plt.xlabel(xlabel)
         plt.legend(loc=(1.0, 0), prop={'size':10})
         plt.grid(True)
-        plt.savefig(label + '_' + outputname,
+        plt.savefig(label + '_' + outputname +'.png',
                     format='png',
                     bbox_inches='tight')
         plt.close()
@@ -720,7 +720,7 @@ def stacked_bar_chart(dictionary, timestep,
     plt.xlabel(xlabel)
     plt.legend(loc=(1.0, 0))
     plt.grid(True)
-    plt.savefig(outputname, format='png', bbox_inches='tight')
+    plt.savefig(outputname + '.png', format='png', bbox_inches='tight')
     plt.close()
 
 
@@ -783,7 +783,7 @@ if __name__ == "__main__":
     with con:
         cur = con.cursor()
         # print(snf(cur))
-        plot_power(cur)
+        # plot_power(cur)
         # plot_in_out_flux(cur, 'source', False, 'source vs time', 'source')
         # plot_in_out_flux(cur, 'sink', True, 'isotope vs time', 'sink')
         init_year, init_month, duration, timestep = get_sim_time_duration(cur)
@@ -807,16 +807,19 @@ if __name__ == "__main__":
                           'Total Fuel Mass vs Time',
                           'total_fuel',
                           init_year)
-        pile_dict = get_stockpile(cur, 'Mixer')
-        multi_line_plot(pile_dict, timestep,
-                        'Years', 'Mass[MTHM]',
-                        'Total Stockpile of tailings vs Time', 'Total_Stockpile', init_year)
-        pile_dict2 = get_stockpile(cur, 'Separations')
-        multi_line_plot(pile_dict2, timestep,
-                        'Years', 'Mass[MTHM]',
-                        'Total Stockpile of ReprU vs Time', 'Total_Stockpile', init_year)
-        tail_dict = {}
-        tail_dict['tailing'] = [x + y for x,y in zip(waste_dict['Enrichment'], pile_dict['Mixer'])]
-        multi_line_plot(tail_dict, timestep,
-                        'Years', 'Mass[MTHM]',
-                        'Total Tailing vs Time', 'Total_tailings', init_year)
+        try:
+            pile_dict = get_stockpile(cur, 'Mixer')
+            multi_line_plot(pile_dict, timestep,
+                            'Years', 'Mass[MTHM]',
+                            'Tailings left over in Mixer vs Time', 'Total_Stockpile', init_year)
+            pile_dict2 = get_stockpile(cur, 'Separations')
+            multi_line_plot(pile_dict2, timestep,
+                            'Years', 'Mass[MTHM]',
+                            'Total Stockpile of ReprU vs Time', 'Total_Stockpile', init_year)
+            tail_dict = {}
+            tail_dict['tailing'] = [x + y for x,y in zip(waste_dict['Tails'], pile_dict['Mixer'])]
+            multi_line_plot(tail_dict, timestep,
+                            'Years', 'Mass[MTHM]',
+                            'Total Tailing vs Time', 'Total_tailings', init_year)
+        except:
+            print('Seems like it is once through')
